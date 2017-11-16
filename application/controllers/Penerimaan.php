@@ -15,6 +15,7 @@
 			$val_date2 = $this->input->post('tgl_terima');
 			$tgl_terima = date('Y-m-d',strtotime($val_date2));
 			$session = array('listed' => TRUE,
+							 'no_bpb' => $this->input->post('kode_bpb'),
 							 'tgl_bpb' => $tgl_bpb,
 							 'tgl_terima' => $tgl_terima,
 							 'kode_supplier' => $this->input->post('kode_supplier'),
@@ -63,21 +64,33 @@
 		}
 		public function save()
 		{
-			foreach ($this->cart->contents() as $items){
-				$i=0;
-				foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value){
-					$i++;
-					if ($i==2) {
-						$data = array('id_penjualan' => $this->session->userdata('id_penjualan'),
-							   'id_barang' => $items['id'],
-							   'jumlah_jual' => $items['qty'],
-							   'diskon_barang' => $option_value
-							  );
-        				echo $option_value;
-					}
-        			
-            	}
+			$main = array('kode_bpb' => $this->session->userdata('no_bpb'),
+						  'kode_gudang' => $this->session->userdata('gudang')
+						 );
+			$y = $this->Mod_Query->add('penerimaan_barang',$main);
+			if ($y > 0) {
+				foreach ($this->cart->contents() as $items){
+					$i=0;
+					$foo = $this->cart->product_options($items['rowid']);
+					foreach ($foo as $option_name => $option_value){
+						$i++;
+						if ($i==2) {
+							$data = array('kode_bpb' => $this->session->userdata('no_bpb'),
+								   'kode_barang' => $items['id'],
+								   'nama_barang' => $items['name'],
+								   'uraian' => $foo['deskripsi'],
+								   'qty' => $items['qty'],
+								   'satuan' => $foo['satuan'],
+								   'qty_ctrl' => $foo['qty_ctrl'],
+								   'unit_ctrl' => $foo['unit_ctrl'],
+								   'sn' => $foo['sn'],
+								  );
+							$x = $this->Mod_Query->add('penerimaan_barang_dt',$data);
+						}
+	            	}
+				}
 			}
+			redirect('admin-page/master/barang');
 		}
 	}
 ?>

@@ -45,7 +45,7 @@
 		}
 		public function logout()
 		{
-			if ($this->session->userdata('dewa_logged_in')) {
+			if ($this->session->userdata('logged_in')) {
 				$this->session->sess_destroy();
 				redirect('admin-page/');
 			} else {
