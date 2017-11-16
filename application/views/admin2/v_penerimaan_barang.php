@@ -12,7 +12,7 @@
 		                <div class="col-md-8">
 		                    <div class="input-icon right">
 		                        <i class="fa"></i>
-		                        <input type="text" class="form-control" name="kode_bpb" value="<?php echo $kode ?>" readonly /> </div>
+		                        <input type="text" class="form-control" name="kode_bpb" value="<?php echo $this->session->userdata('no_bpb') ?>" readonly /> </div>
 		                </div>
 		            </div>
 		            <div class="form-group">
@@ -22,7 +22,7 @@
 		                <div class="col-md-8">
 		                    <div class="input-icon right">
 		                        <i class="fa"></i>
-		                        <div class=" input-group date datepicker datepickerid" data-date-format="yyyy/mm/dd">
+		                        <div class=" input-group">
 		                            <input name="tgl_bpb" type="text" class="form-control" value="<?php echo $this->session->userdata('tgl_bpb') ?>" readonly="">
 		                            <span class="input-group-addon" style="">
 		                                <span class="icon-calendar"></span>
@@ -38,8 +38,7 @@
 		                <div class="col-md-8">
 		                    <div class="input-icon right">
 		                        <i class="fa"></i>
-		                        <div class="input-group date datepicker datepickerid"
-		                         data-date-format="yyyy/mm/dd" data-date-start-date="+0d">
+		                        <div class="input-group">
 		                            <input type="date" class="form-control" name="tgl_terima" value="<?php echo $this->session->userdata('tgl_terima') ?>" readonly="">
 		                            <span class="input-group-addon" style="">
 		                                <span class="icon-calendar"></span>
@@ -386,6 +385,7 @@
 							<td  class="text-center"><a class="btn btn-danger" href="<?php echo base_url('admin-page/gudang/remove-list/'). $items['rowid']?>"><i class="fa fa-times"></i></a>
 							</td>
 			            </tr>
+			            
 		    <?php 
 		    	}
 		    ?>
@@ -395,7 +395,7 @@
 	<table class="table table-stripped">
 		<tr>
 			<td colspan="4"><a class="hidden btn btn-success btn-block" href="">Save</a></td>
-			<td colspan="4"><a class="btn btn-success btn-block" href="">Save</a></td>
+			<td colspan="4"><a class="btn btn-success btn-block" href="<?php echo base_url('admin-page/gudang/save-penerimaan') ?>">Save</a></td>
 		</tr>
 	</table>
 	<div class="clearfix"> </div>
