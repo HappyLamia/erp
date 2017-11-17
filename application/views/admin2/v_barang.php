@@ -2,7 +2,7 @@
 	<div class="content-top-1">
 		<div class="table-responsive">
 			<div class="panel panel-primary">
-				<div class="panel-heading"><i class="fa fa-building-o"></i> Data Gudang </div>
+				<div class="panel-heading"><i class="fa fa-building-o"></i> Data Barang </div>
 				<div class="panel-body">
 					<table id="myTable" class="table table-bordered">
 						<thead>
