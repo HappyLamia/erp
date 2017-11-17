@@ -117,19 +117,10 @@
 				}
 				elseif ($url=='barang') 
 				{
-					if ($sub_url=='detail') {
-						$data['section'] = 'POS';
-						$data['sub_section'] = 'Detail Barang';
-						$data['dtl_barang'] = $this->Mod_Query->get_where('result','v_stok',array('id_barang'=>$param));
-						$data['dt_satuan'] = $this->Mod_Query->get_where('result','barang',array('id_barang'=>$param));
-						$data['page'] = 'admin/v_dt_barang';
-					} 
-					else 
-					{
-						$data['section'] = 'POS';
-						$data['sub_section'] = 'Barang';
-						$data['page'] = 'admin/v_barang';
-					}
+					$data['section'] = array('name'=>'Salesman' ,'link'=>'');
+					$data['sub_section'] = array('name'=>'Tracker' ,'link'=>'');
+					$data['barang'] = $this->Mod_Query->get('result','barang');
+					$data['page'] = $template.'/v_barang';
 				}
 				else
 				{
@@ -205,6 +196,10 @@
 				$concat = $char.'-'.$tgl.'-'.$no;
 			}
 			return $concat;
+		}
+		public function get_button()
+		{
+			return '<a class="btn '.$btn.'" href="'.bas_url($link).'">"'.$name.'"</a>';
 		}
 		public function menus($value='')
 		{
