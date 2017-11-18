@@ -15,5 +15,23 @@
 			$query = $this->db->query($cmd);
 			return $query->row();
 		}
+		public function set_log($user,$action,$host,$target='')
+		{
+			$data = array('user' => $user,
+						  'action' => $action,
+						  'target_host' => $host,
+						  'target' => $target
+						 );
+			$query = $this->db->insert('log',$data);
+			return $query;
+		}
+		public function check($user,$action)
+		{
+			$data = array('user' => $user,
+						  'action' => $action
+						 );
+			$query = $this->db->insert('log',$data);
+			return $query;
+		}
 	}
 ?>
