@@ -57,9 +57,12 @@ $route['admin-page'] = 'main/view';
 $route['admin-page/login'] = 'landing/login';
 $route['admin-page/logout'] = 'landing/logout';
 
+// Barang
+$route['admin-page/master/barang'] = 'main/view/barang';
+
 // Customer
 $route['admin-page/customer/add'] = 'customer/add';
-$route['admin-page/customer/update'] = 'customer/update';
+$route['admin-page/customer/update'] = 'customer/renew';
 $route['admin-page/customer/delete/(:any)'] = 'customer/delete/$1';
 $route['admin-page/master/customer'] = 'main/view/customer';
 
@@ -74,15 +77,25 @@ $route['admin-page/master/salesman'] = 'main/view/salesman';
 
 // Supplier
 $route['admin-page/supplier/add'] = 'supplier/add';
-$route['admin-page/supplier/update'] = 'supplier/update';
+$route['admin-page/supplier/update'] = 'supplier/renew';
 $route['admin-page/supplier/delete/(:any)'] = 'supplier/delete/$1';
 $route['admin-page/master/supplier'] = 'main/view/supplier';
+
+// Cabang
+$route['admin-page/cabang/add'] = 'cabang/add';
+$route['admin-page/cabang/update'] = 'cabang/renew';
+$route['admin-page/cabang/delete/(:any)'] = 'cabang/delete/$1';
+$route['admin-page/master/cabang'] = 'main/view/cabang';
 
 // Gudang
 $route['admin-page/gudang/add'] = 'gudang/add';
 $route['admin-page/gudang/update'] = 'gudang/update';
 $route['admin-page/gudang/delete/(:any)'] = 'gudang/delete/$1';
 $route['admin-page/master/gudang'] = 'main/view/gudang';
+	// Stock Opname
+	$route['admin-page/gudang/stock-opname'] = 'main/view/stock_opname';
+	// Stock Opname
+	$route['admin-page/gudang/stock-gudang'] = 'main/view/stock_gudang';
 	// Penerimaan Barang
 	$route['admin-page/gudang/penerimaan-barang'] = 'main/view/penerimaan';
 	$route['admin-page/gudang/save-penerimaan'] = 'penerimaan/save';
