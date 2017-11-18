@@ -14,9 +14,13 @@
             
             <li><a href="<?php echo base_url('admin-page/master/customer') ?>" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon"></i>Customer</a></li>
 
+            <li><a href="<?php echo base_url('admin-page/master/cabang') ?>" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon"></i>Cabang</a></li>
+
             <li><a href="<?php echo base_url('admin-page/master/gudang') ?>" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon"></i>Gudang</a></li>
 
             <li><a href="<?php echo base_url('admin-page/master/satuan') ?>" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon"></i>Satuan</a></li>
+
+
        </ul>
     </li>
     <li>
@@ -41,6 +45,22 @@
     </li>
     <li>
         <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span class="nav-label">Penjualan</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li><a href="<?php echo base_url('admin-page/penjualan/order-barang') ?>" class=" hvr-bounce-to-right"> <i class="fa fa-dropbox nav_icon"></i>Order</a></li>
+            
+            <li><a href="<?php echo base_url('admin-page/penjualan/retur') ?>" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon"></i>Retur Penjualan</a></li>
+       </ul>
+    </li>
+    <li>
+        <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span class="nav-label">Accounting</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li><a href="<?php echo base_url('admin-page/penjualan/order-barang') ?>" class=" hvr-bounce-to-right"> <i class="fa fa-dropbox nav_icon"></i>Order</a></li>
+            
+            <li><a href="<?php echo base_url('admin-page/penjualan/retur') ?>" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon"></i>Retur Penjualan</a></li>
+       </ul>
+    </li>
+    <li>
+        <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span class="nav-label">Persetujuan</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li><a href="<?php echo base_url('admin-page/penjualan/order-barang') ?>" class=" hvr-bounce-to-right"> <i class="fa fa-dropbox nav_icon"></i>Order</a></li>
             
