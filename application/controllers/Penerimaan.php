@@ -26,6 +26,7 @@
 							 'no_po' => $this->input->post('no_po'),
 							 'catatan' => $this->input->post('catatan')
 							);
+			print_r($session);
 			$this->session->set_userdata($session);
 			redirect('admin-page/gudang/penerimaan-barang');
 		}
@@ -65,7 +66,14 @@
 		public function save()
 		{
 			$main = array('kode_bpb' => $this->session->userdata('no_bpb'),
-						  'kode_gudang' => $this->session->userdata('gudang')
+						  'tgl_bpb' => $this->session->userdata('tgl_bpb'),
+						  'tgl_terima' => $this->session->userdata('tgl_terima'),
+						  'kode_supplier' => $this->session->userdata('kode_supplier'),
+						  'pemeriksa' => $this->session->userdata('pemeriksa'),
+						  'penyetuju' => $this->session->userdata('penyetuju'),
+						  'kode_gudang' => $this->session->userdata('gudang'),
+						  'no_sj' => $this->session->userdata('no_sj'),
+						  'no_po' => $this->session->userdata('no_po')
 						 );
 			$y = $this->Mod_Query->add('penerimaan_barang',$main);
 			if ($y > 0) {

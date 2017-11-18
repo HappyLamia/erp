@@ -7,17 +7,6 @@
 		{
 			redirect('admin-page/home');
 		}
-		public function set_alert($value)
-		{
-			$this->session->set_flashdata('login_alert',$value);
-		}
-		public function set_log($value)
-		{
-			$data = array('username' => $this->session->userdata('username'),
-						  'aktifitas' => $value
-				         );
-			$this->Mod_Query->add('log',$data);
-		}
 		public function login()
 		{
 			$data = array('username' => $this->input->post('username'),
@@ -35,11 +24,7 @@
 				redirect('admin-page/');
 			}
 			else{
-				$msg = "<div class='alert alert-warning alert-dismissable'>
-						    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						    <strong>Warning!</strong> Invalid Account , Please Input The Correct Account
-						  </div>";
-				$this->set_alert($msg);
+				set_alert('login_alert',4);
 				redirect('admin-page/');
 			}
 		}

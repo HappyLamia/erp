@@ -5,18 +5,7 @@
 	*/
 	class Supplier extends CI_Controller
 	{	
-		public function set_log($value)
-		{
-			$data_log = array('id_user' => $this->session->userdata('id_user'),
-								 'aktifitas' => $value
-								);
-			$this->Mod_Query->add('log',$data_log);
-		}
-		public function set_alert($value)
-		{
-			$this->session->set_flashdata('supplier_alert', $value);
-		}
-		function tambah_supplier(){
+		function add(){
 			if ($this->session->userdata('logged_in')) {
 				$data = array('id_supplier' => $this->input->post('kode_supplier'),
 							  'nama' => $this->input->post('nama_supplier'),
@@ -27,15 +16,12 @@
 				$x = $this->Mod_Query->add('supplier',$data);
 				try {
 					if ($x) {
-						$this->set_log('Menambah Supplier');
-						$this->set_alert("<div class='alert alert-info alert-dismissable'>
-										    	<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-										    	<strong class='fa fa-check'> Supplier Telah Ditambah</strong> 
-										    </div>");
-						redirect('main/index/supplier/');
+						set_alert('supplier_alert',1);
+						$this->Mod_Number->set_log(get_user(),'Tambah Supplier','Supplier',$data['id_supplier']);
+						redirect('admin-page/master/supplier');
 					}
 					else{
-						redirect('main/index/supplier/');
+						redirect('admin-page/master/supplier');
 					}
 				} catch (Exception $e) {
 					echo $this->db->error();
@@ -43,7 +29,7 @@
 				
 			}
 		}
-		function ubah_supplier(){
+		function renew(){
 			if ($this->session->userdata('logged_in')) {
 				$by = array('id_supplier' => $this->input->post('kode_supplier'));
 				$data = array('nama' => $this->input->post('nama_supplier'),
@@ -54,12 +40,9 @@
 				$x = $this->Mod_Query->renew('supplier',$data,$by);
 				try {
 					if ($x) {
-						$this->set_log('Mengubah Supplier');
-						$this->set_alert("<div class='alert alert-info alert-dismissable'>
-										    	<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-										    	<strong class='fa fa-check'> Supplier Telah Diubah</strong> 
-										    </div>");
-						redirect('main/index/supplier/');
+						set_alert('supplier_alert',2);
+						$this->Mod_Number->set_log(get_user(),'Perbaharui Supplier ','Supplier',$by['id_supplier']);
+						redirect('admin-page/master/supplier');
 					}
 					else{
 						redirect('main/index/supplier/gagal');
@@ -70,17 +53,14 @@
 				
 			}
 		}
-		function hapus_supplier($value){
+		function delete($value){
 			if ($this->session->userdata('logged_in')) {
 				$data = array('id_supplier' => $value);
 				$x = $this->Mod_Query->clear_by('supplier',$data);
 				if ($x > 0) {
-					$this->set_log('Menghapus Supplier');
-					$this->set_alert("<div class='alert alert-info alert-dismissable'>
-									    	<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-									    	<strong class='fa fa-check'> Supplier Telah Dihapus</strong> 
-									    </div>");
-					redirect('main/index/supplier/');
+					set_alert('supplier_alert',3);
+					$this->Mod_Number->set_log(get_user(),'Hapus Supplier ','Supplier',$data['id_supplier']);
+					redirect('admin-page/master/supplier');
 				}
 				else{
 					redirect('main/index/supplier/');
